@@ -37,14 +37,14 @@ function main(action) {
 
 // GitHub action entry point.
 function artipieUpload(core, github) {
-  const url = core.getInput('server');
+  const server = core.getInput('server');
   const repo = core.getInput('repo');
   const file = core.getInput('file');
   let name = core.getInput('path');
   if (!name) {
     name = file;
   }
-  const url = new URL(`${url}/${repo}/${name}`);
+  const url = new URL(`${server}/${repo}/${name}`);
   const options = {
     host: url.host,
     port: url.port,
