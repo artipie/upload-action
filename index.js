@@ -49,6 +49,7 @@ function artipieUpload(core, github) {
     host: url.host,
     port: url.port,
     path: url.pathname,
+    followAllRedirects: true,
     method: 'PUT'
   };
   const username = core.getInput('username');
