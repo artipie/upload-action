@@ -49,6 +49,7 @@ function artipieUpload(core, github) {
     host: url.host,
     port: url.port,
     path: url.pathname,
+    protocol: url.protocol,
     followAllRedirects: true,
     method: 'PUT'
   };
@@ -58,11 +59,7 @@ function artipieUpload(core, github) {
     options['Authorization'] = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
   }
   const http = require('http');
-  const req = http.request(options, function (res) {
-    if (res.statusCode == 301) {
-      // ignore redirects
-      return;
-    }
+  const req = http.request(options, (res) => {
     if (res.statusCode == 201) {
       core.info(`File ${file} was successfully uploaded to ${url}`);
     } else {
