@@ -50,7 +50,7 @@ function artipieUpload(core, github) {
     host: url.host,
     port: url.port,
     path: url.pathname,
-    protocol: protocol,
+    protocol: protocol + ":",
     followAllRedirects: true,
     method: 'PUT'
   };
