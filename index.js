@@ -29,7 +29,7 @@ function main(action) {
   const core = require('@actions/core');
   const github = require('@actions/github');
   try {
-    action();
+    action(core, github);
   } catch (err) {
     core.setFailed(err.message);
   }
