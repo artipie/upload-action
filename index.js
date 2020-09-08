@@ -56,8 +56,10 @@ function artipieUpload(core, github) {
   };
   const username = core.getInput('username');
   if (username) {
+    const headers = options['headers'] || {};
     const password = core.getInput('password');
-    options['Authorization'] = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+    headers['Authorization'] = 'Basic ' + Buffer.from(`${username}:${password}`, 'utf8').toString('base64');
+    options['headers'] = headers;
   }
   const http = require(protocol);
   const req = http.request(options, (res) => {
