@@ -45,11 +45,12 @@ function artipieUpload(core, github) {
     name = file;
   }
   const url = new URL(`${server}/${repo}/${name}`);
+  const protocol = url.protocol.replace(/:+$/, '')
   const options = {
     host: url.host,
     port: url.port,
     path: url.pathname,
-    protocol: url.protocol,
+    protocol: protocol,
     followAllRedirects: true,
     method: 'PUT'
   };
@@ -58,7 +59,7 @@ function artipieUpload(core, github) {
     const password = core.getInput('password');
     options['Authorization'] = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
   }
-  const http = require('http');
+  const http = require(protocol);
   const req = http.request(options, (res) => {
     if (res.statusCode == 201) {
       core.info(`File ${file} was successfully uploaded to ${url}`);
@@ -76,6 +77,5 @@ function artipieUpload(core, github) {
   req.write(data);
   req.end();
 }
-
 
 main(artipieUpload);
