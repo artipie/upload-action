@@ -59,6 +59,10 @@ function artipieUpload(core, github) {
   }
   const http = require('http');
   const req = http.request(options, function (res) {
+    if (res.statusCode == 301) {
+      // ignore redirects
+      return;
+    }
     if (res.statusCode == 201) {
       core.info(`File ${file} was successfully uploaded to ${url}`);
     } else {
