@@ -20,8 +20,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 ---
-name: 'Upload'
+name: 'Artipie upload action'
 description: 'Upload files to Artipie server'
+branding:
+  icon: arrow-up-circle
+  color: blue
 inputs:
   server:
     description: 'Artipie server base URL'
