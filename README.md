@@ -28,10 +28,11 @@ Here is some explanations:
     password: "${{ secrets.ARTIPIE_PASSWORD }}"
 ```
 
-## Options
+## Parameters (inputs)
 
+The table of parameters to configure upload:
 
-| Option        | Optional | Description                    | Default value               |
+| Parameter     | Optional | Description                    | Default value               |
 |:------------- |:---------|:-------------------------------|:----------------------------|
 | `server`      | yes      | Artipie server base URL        | https://central.artipie.com |
 | `repo`        | no       | Artipie repository coordinates |                             |
@@ -40,3 +41,8 @@ Here is some explanations:
 | `username`    | yes      | Artipie username               |                             |
 | `password`    | yes      | Artipie password               |                             |
 
+## Outputs
+
+The list of output results produced by this action:
+ - `url` (string): the URL of uploaded file, can be used to download this file
+ 
