@@ -45,6 +45,9 @@ inputs:
   password:
     description: 'Artipie password'
     required: false
+outputs:
+  url:
+    description: 'Target URL of uploaded file'
 runs:
   using: 'node12'
   main: 'index.js'

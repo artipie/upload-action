@@ -65,6 +65,7 @@ function artipieUpload(core, github) {
   const req = http.request(options, (res) => {
     if (res.statusCode == 201) {
       core.info(`File ${file} was successfully uploaded to ${url}`);
+      core.setOutput(String(url));
     } else {
       core.error(`Failed to upload file ${file}: ${res.statusCode}`);
       core.setFailed('Upload failed');
